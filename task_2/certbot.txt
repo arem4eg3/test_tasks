@@ -1,0 +1,1 @@
+certbot certonly --webroot -w /opt/docker-instances/nginx/sites/ -d artem4eg.cc

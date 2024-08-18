@@ -1,0 +1,13 @@
+apt -y install fail2ban
+systemctl enable --now fail2ban
+nano /etc/fail2ban/jail.d/defaults-debian.conf
+
+[sshd]
+enabled = true
+bantime  = 600
+findtime  = 3m
+maxretry = 5
+action = %(action_mw)s
+-----------------------------
+systemctl reload fail2ban
+fail2ban-client status

@@ -1,0 +1,28 @@
+services:
+  php-fpm1:
+    build:
+      context: .
+      dockerfile: Dockerfile-php-fpm
+    container_name: php-fpm1
+    volumes:
+      - ./sites:/var/www/html
+      - ./php-fpm:/usr/local/etc/php:ro
+    restart: unless-stopped
+    networks:
+      - mynetwork
+
+  php-fpm2:
+    build:
+      context: .
+      dockerfile: Dockerfile-php-fpm
+    container_name: php-fpm2
+    volumes:
+      - ./sites:/var/www/html
+      - ./php-fpm:/usr/local/etc/php:ro
+    restart: unless-stopped
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge

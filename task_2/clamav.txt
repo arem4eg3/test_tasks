@@ -1,0 +1,9 @@
+apt -y install clamav
+sed -i -e "s/^NotifyClamd/#NotifyClamd/g" /etc/clamav/freshclam.conf
+systemctl stop clamav-freshclam
+freshclam
+systemctl start clamav-freshclam
+clamscan --infected --remove --recursive /home
+# download test virus
+wget http://www.eicar.org/download/eicar.com
+clamscan --infected --remove --recursive ./

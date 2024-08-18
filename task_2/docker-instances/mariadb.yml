@@ -1,0 +1,15 @@
+services:
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: password
+    volumes:
+      - ./mariadb:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
